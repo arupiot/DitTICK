@@ -1,0 +1,25 @@
+curl -u ditto:ditto -X PUT -d '{
+    "attributes": {
+        "manufacturer": "SmokeAndMirrors Co.",
+        "VIN": "101666"
+    },
+    "features": {
+        "udmi": {
+            "properties": {
+                "version": 1,
+                "timestamp": "0",
+                "points": {
+                    "lux_level": {
+                        "present_value": 0
+                    },
+                    "lum_value": {
+                        "present_value": 0
+                    },
+                    "dimmer_value": {
+                        "present_value": 0
+                    }
+                }
+            }
+        }
+    }
+}' 'http://localhost:8080/api/2/things/arup.eight.fitzroy:UDMIduino-000'

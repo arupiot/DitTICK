@@ -1,0 +1,35 @@
+curl -u devops:foobar -X POST -d '{
+    "targetActorSelection": "/system/sharding/connection",
+    "headers": {
+        "aggregate": false
+    },
+    "piggybackCommand": {
+        "type": "connectivity.commands:testConnection",
+        "connection": {
+            "id": "mqtt-udmiduino-0",
+            "connectionType": "mqtt",
+            "connectionStatus": "open",
+            "failoverEnabled": true,
+            "uri": "tcp://10.8.0.180:1883",
+            "sources": [
+                {
+                "addresses": [
+                    "arup-8-fitzroy-street/#"
+                ],
+                "authorizationContext": ["nginx:ditto"],
+                "qos": 0,
+                "filters": []
+                }
+            ],
+            "targets": [{
+                "address": "arup-8-fitzroy-street/{{ thing:id }}",
+                "topics": [
+                    "_/_/things/twin/events",
+                    "_/_/things/live/messages"
+                ],
+                "authorizationContext": ["nginx:ditto"],
+                "qos": 0
+            }]
+        }
+    }
+}' 'http://localhost:8080/devops/piggyback/connectivity'
