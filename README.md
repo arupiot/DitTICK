@@ -11,6 +11,7 @@ https://github.com/eclipse/ditto-examples/tree/master/mqtt-bidirectional
 - Create a connection
 - Create a thing
 - Create a payload mapping
+     - And then debug for a while
 
 ## Gotchas
 
