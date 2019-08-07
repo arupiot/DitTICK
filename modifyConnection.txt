@@ -4,7 +4,7 @@ curl -u devops:foobar -X POST -d '{
         "aggregate": false
     },
     "piggybackCommand": {
-        "type": "connectivity.commands:createConnection",
+        "type": "connectivity.commands:modifyConnection",
         "connection": {
             "id": "mqtt-udmiduino-0",
             "connectionType": "mqtt",
@@ -33,7 +33,7 @@ curl -u devops:foobar -X POST -d '{
             "mappingContext": {
                 "mappingEngine": "JavaScript",
                 "options": {
-                    "incomingScript": ""
+                    "incomingScript": "function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) { const jsonString = String.fromCharCode.apply(null, new Uint8Array(bytePayload)); const jsonData = JSON.parse(jsonString); const thingId = `arup.eight.fitzroy:UDMIduino-000`; const value = { udmi: jsonData }; return Ditto.buildDittoProtocolMsg( 'my.test', thingId, 'things', 'twin', 'commands', 'modify', `/features`, headers, value ); }"
                 }
             }
         }

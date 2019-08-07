@@ -1,4 +1,5 @@
 curl -u ditto:ditto -X PUT -d '{
+    "policyId": "my.test:policy",
     "attributes": {
         "manufacturer": "SmokeAndMirrors Co.",
         "VIN": "101666"
