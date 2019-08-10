@@ -1,0 +1,10 @@
+curl -X POST 'http://localhost:8080/devops/piggyback/connectivity?timeout=10000' -u 'devops:foobar' -H'ditto:ditto' -H 'Content-Type: application/json' -d '{
+"targetActorSelection": "/system/sharding/connection",
+"headers": {
+"aggregate": false
+},
+"piggybackCommand": {
+"type": "connectivity.commands:retrieveConnectionMetrics",
+"connectionId":"mqtt-udmiduino-0"
+}
+}'

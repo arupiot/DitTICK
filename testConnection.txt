@@ -10,7 +10,7 @@ curl -X POST -i -u devops:foobar -H 'Content-Type: application/json' -d '{
             "connectionType": "mqtt",
             "connectionStatus": "open",
             "failoverEnabled": true,
-            "uri": "tcp://10.8.0.180:1883",
+            "uri": "tcp://10.18.32.213:1883",
             "sources": [
                 {
                 "addresses": [
@@ -23,10 +23,6 @@ curl -X POST -i -u devops:foobar -H 'Content-Type: application/json' -d '{
             ],
             "targets": [{
                 "address": "arup-8-fitzroy-street/{{ thing:id }}",
-                "topics": [
-                    "_/_/things/twin/events",
-                    "_/_/things/live/messages"
-                ],
                 "authorizationContext": ["nginx:ditto"],
                 "qos": 0
             }]

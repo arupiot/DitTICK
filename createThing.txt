@@ -1,5 +1,5 @@
 curl -u ditto:ditto -X PUT -d '{
-    "policyId": "my.test:policy",
+    "policyId": "arup.eight.fitzroy:policy",
     "attributes": {
         "manufacturer": "SmokeAndMirrors Co.",
         "VIN": "101666"

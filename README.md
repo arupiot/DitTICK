@@ -6,12 +6,37 @@ https://github.com/eclipse/ditto-examples/tree/master/mqtt-bidirectional
 
 ## Getting started
 
-- Start ditto via `docker-compose`
+- Start ditto via `docker-compose up -d`
 - Create a policy
 - Create a connection
 - Create a thing
+
+
+- Test with `mosquitto_pub` first, don't get crazy!
+
+```
+mosquitto_pub -h localhost -p 1883 -t arup-8-fitzroy-street/UDMIduino-000/event
+s -m 'test'
+```
+
+With a sample payload like:
+
+```
+{"present_value":62}
+```
+
+e.g.
+
+```
+mosquitto_pub -h localhost -p 1883 -t arup-8-fitzroy-street/UDMIduino-000/events -m '{"present_value":62}' -d
+```
+
+
 - Create a payload mapping
      - And then debug for a while
+     - read this forever: https://www.eclipse.org/ditto/connectivity-mapping.html
+
+- remove newlines in the JS with `tr '\n' ' ' < payloadMapping.js > payloadMapping.txt`
 
 ## Gotchas
 
