@@ -9,13 +9,13 @@ function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {
                 timestamp: 0,
                 points: {
                     lux_level: {
-                        present_value: jsonData.present_value
+                        present_value: jsonData.points.lux_level.present_value
                     },
                     lum_value: {
-                        present_value: 0
+                        present_value: jsonData.points.lum_value.present_value
                     },
                     dimmer_value: {
-                        present_value: 0
+                        present_value: jsonData.points.dimmer_value.present_value
                     }
                 }
             }

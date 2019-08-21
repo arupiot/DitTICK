@@ -10,7 +10,7 @@ curl -u devops:foobar -X POST -d '{
             "connectionType": "mqtt",
             "connectionStatus": "open",
             "failoverEnabled": true,
-            "uri": "tcp://10.18.32.213:1883",
+            "uri": "tcp://10.8.0.62:1883",
             "sources": [
                 {
                 "addresses": [
@@ -29,7 +29,7 @@ curl -u devops:foobar -X POST -d '{
             "mappingContext": {
                 "mappingEngine": "JavaScript",
                 "options": {
-                    "incomingScript": "function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {     const thingId = `UDMIduino-000`;     const jsonString = String.fromCharCode.apply(null, new Uint8Array(bytePayload));     const jsonData = JSON.parse(jsonString);     const value = {         udmi: {             properties: {                 version: 1,                 timestamp: 0,                 points: {                     lux_level: {                         present_value: jsonData.present_value                     },                     lum_value: {                         present_value: 0                     },                     dimmer_value: {                         present_value: 0                     }                 }             }         }     };      return Ditto.buildDittoProtocolMsg(         `arup.eight.fitzroy`,         thingId,         `things`,         `twin`,         `commands`,         `modify`,         `/features`,         headers,         value     ); }"
+                    "incomingScript": "function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {     const thingId = `UDMIduino-000`;     const jsonString = String.fromCharCode.apply(null, new Uint8Array(bytePayload));     const jsonData = JSON.parse(jsonString);     const value = {         udmi: {             properties: {                 version: 1,                 timestamp: 0,                 points: {                     lux_level: {                         present_value: jsonData.points.lux_level.present_value                     },                     lum_value: {                         present_value: jsonData.points.lum_value.present_value                     },                     dimmer_value: {                         present_value: jsonData.points.dimmer_value.present_value                     }                 }             }         }     };      return Ditto.buildDittoProtocolMsg(         `arup.eight.fitzroy`,         thingId,         `things`,         `twin`,         `commands`,         `modify`,         `/features`,         headers,         value     ); }"
                 }
             }
         }
