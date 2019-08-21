@@ -1,0 +1,1 @@
+curl -X PUT "http://localhost:8080/api/2/things/arup.eight.fitzroy%3AUDMIduino-000" -H "accept: application/json" -u 'ditto:ditto' -H "Content-Type: application/json" -d "{\"version\":1,\"timestamp\":\"0\",\"points\":{\"lux_level\":{\"present_value\":0},\"lum_value\":{\"present_value\":0},\"dimmer_value\":{\"present_value\":0}}}"

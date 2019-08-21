@@ -15,8 +15,7 @@ https://github.com/eclipse/ditto-examples/tree/master/mqtt-bidirectional
 - Test with `mosquitto_pub` first, don't get crazy!
 
 ```
-mosquitto_pub -h localhost -p 1883 -t arup-8-fitzroy-street/UDMIduino-000/event
-s -m 'test'
+mosquitto_pub -h localhost -p 1883 -t arup-8-fitzroy-street/UDMIduino-000/events -m 'test'
 ```
 
 With a sample payload like:

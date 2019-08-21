@@ -14,7 +14,7 @@ curl -u devops:foobar -X POST -d '{
             "sources": [
                 {
                 "addresses": [
-                    "arup-8-fitzroy-street/#"
+                    "arup-8-fitzroy-street/UDMIduino-000/events"
                 ],
                 "authorizationContext": ["nginx:ditto"],
                 "qos": 0,
@@ -22,8 +22,12 @@ curl -u devops:foobar -X POST -d '{
                 }
             ],
             "targets": [{
-                "address": "arup-8-fitzroy-street/{{ thing:id }}",
+                "address": "arup-8-fitzroy-street/UDMIduino-000/lum-value",
                 "authorizationContext": ["nginx:ditto"],
+                "topics": [
+                "_/_/things/twin/events",
+                "_/_/things/live/messages"
+                ],
                 "qos": 0
             }],
             "mappingContext": {
