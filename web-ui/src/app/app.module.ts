@@ -1,9 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+
+import {
+  MqttModule,
+  IMqttServiceOptions
+} from 'ngx-mqtt';
+
+const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'localhost',
+  port: 1883,
+  path: '/mqtt'
+};
 
 @NgModule({
   declarations: [
@@ -13,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
   ],
   providers: [],
   bootstrap: [AppComponent]
