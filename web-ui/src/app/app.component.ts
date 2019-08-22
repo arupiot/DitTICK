@@ -22,27 +22,46 @@ export class AppComponent implements OnDestroy {
   ) { }
 
   start(): void {
-    console.log("starting");
-    this.creationService.createPolicy()
-    .subscribe(res => {
-      console.log(res);
-      console.log("next request");
+    this.policy()
+    .then(() => this.connection())
+    .then(() => this.thing())
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  policy(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.creationService.createPolicy()
+      .subscribe(res => {
+        console.log(res);
+        resolve();
+      }, err => {
+        reject(err);
+      });
+    });
+  }
+  connection(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
       this.creationService.createConnection()
       .subscribe(res => {
         console.log(res);
-        console.log("next request");
-        this.creationService.createThing()
-        .subscribe(res => {
-          console.log(res);
-        }, err => {
-          console.log(err);
-        })
+        resolve();
       }, err => {
-        console.log(err);
-      })
-    }, err => {
-      console.log(err);
-    })
+        reject(err);
+      });
+    });
+  }
+  thing(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.creationService.createThing()
+      .subscribe(res => {
+        console.log(res);
+        resolve();
+      }, err => {
+        reject(err);
+      });
+    });
   }
 
   // subscribe(): void {
