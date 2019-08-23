@@ -33,3 +33,6 @@ Restart Telegraf (when `exec .. bash`'d in)
 ```
 /etc/init.d/telegraf restart
 ```
+
+## Links that helped
+https://github.com/influxdata/telegraf/issues/4580
