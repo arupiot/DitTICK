@@ -10,7 +10,7 @@ curl -u devops:foobar -X POST -d '{
             "connectionType": "mqtt",
             "connectionStatus": "open",
             "failoverEnabled": true,
-            "uri": "tcp://10.18.32.213:1883",
+            "uri": "tcp://10.8.0.62:1883",
            "sources": [
                 {
                 "addresses": [
