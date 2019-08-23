@@ -34,5 +34,11 @@ Restart Telegraf (when `exec .. bash`'d in)
 /etc/init.d/telegraf restart
 ```
 
+View telefrag logs (also when `exec .. bash`'d in)
+
+```
+tail -f /var/log/telegraf/telegraf.log
+```
+
 ## Links that helped
 https://github.com/influxdata/telegraf/issues/4580
