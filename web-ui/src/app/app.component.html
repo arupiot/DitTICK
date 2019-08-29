@@ -1,8 +1,19 @@
-<button (click)="start()">Click to start</button>
-<br>
-<button (click)="policy()">Create policy</button>
-<button (click)="connection()">Create connection</button>
-<button (click)="thing()">Create thing</button>
-<br>
-<button (click)="subscribe()">Click to subscribe</button>
-<button (click)="publish()">Click to publish</button>
+<div class="buttons-container">
+    <div class="border">
+        <h1>Ditto</h1>
+        <button (click)="start()">Click to start</button>
+        <br>
+        <br>
+        <button (click)="policy()">Create policy</button>
+        <button (click)="connection()">Create connection</button>
+        <button (click)="thing()">Create thing</button>
+    </div>
+    <div class="border">
+        <h1>Flask</h1>
+        <button (click)="testPost()">testPost</button>
+        <br>
+        <br>
+        <button (click)="subscribe()">Click to subscribe</button>
+        <button (click)="publish()">Click to publish</button>        
+    </div>
+</div>

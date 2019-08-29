@@ -5,17 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {
-  MqttModule,
-  IMqttServiceOptions
-} from 'ngx-mqtt';
-
-const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: 'localhost',
-  port: 1883,
-  path: '/mqtt'
-};
-
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +13,6 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
   ],
   providers: [],
   bootstrap: [AppComponent]

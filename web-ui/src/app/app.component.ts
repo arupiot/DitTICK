@@ -1,24 +1,21 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CreationService } from './services/creation.service';
-
-import { IMqttMessage, MqttService } from 'ngx-mqtt';
-import { Subscription } from 'rxjs';
+import { FlaskService } from './services/flask.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
   title = 'web-ui';
 
-  private subscription: Subscription;
   public message: string;
 
   constructor(
     private creationService: CreationService,
-    // private _mqttService: MqttService,
+    private flaskService: FlaskService,
   ) { }
 
   start(): void {
@@ -64,19 +61,29 @@ export class AppComponent implements OnDestroy {
     });
   }
 
-  // subscribe(): void {
-  //   this.subscription = this._mqttService.observe('arup-8-fitzroy-street/UDMIduino-000/event').subscribe((message: IMqttMessage) => {
-  //     this.message = message.payload.toString();
-  //     console.log("this.message:", this.message);
-  //   })
-  // }
+  testPost(): void {
+    this.flaskService.testPost()
+    .subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
+  }
 
-  // publish(): void {
-  //   this._mqttService.unsafePublish('arup-8-fitzroy-street/UDMIduino-000/events', '{"present_value":62}', {qos: 1, retain: true})
-  // }
-
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  subscribe(): void {
+    this.flaskService.subscribe()
+    .subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
+  }
+  publish(): void {
+    this.flaskService.publish()
+    .subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
   }
 }
