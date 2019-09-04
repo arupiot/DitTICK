@@ -56,6 +56,40 @@ There are a **lot** of logs produced by ditto, delete them with:
 sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete
 ```
 
+### On mapping subdomains to ports with nginx
+
+See: https://stackoverflow.com/questions/23649444/redirect-subdomain-to-port-nginx-flask
+
+```
+server {
+    listen 80;
+    server_name app.example.com;
+
+    location / {
+        proxy_pass http://localhost:8142;
+    }   
+}
+```
+
+### On mapping subdomains to ports with Apache
+
+Also see: https://stackoverflow.com/questions/23649444/redirect-subdomain-to-port-nginx-flask
+
+```
+cat /etc/apache2/sites-available/app.conf
+<VirtualHost *:80>
+    ServerName app.example.com
+    ProxyPreserveHost On
+    <Proxy *>
+        Order allow,deny
+        Allow from all
+    </Proxy>
+    ProxyPass / http://localhost:8142/
+    ProxyPassReverse / http://localhost:8142/
+</VirtualHost>
+```
+
+
 ## Links
 
 https://www.eclipse.org/ditto/2018-05-02-connecting-ditto-hono.html
