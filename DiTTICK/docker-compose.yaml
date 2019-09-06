@@ -17,6 +17,10 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning
       - ./grafana/dashboards:/var/lib/grafana/dashboards
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    environment:
+      - INFLUXDB_URL=http://localhost:8086
+      - INFLUX_USERNAME=root
+      - INFLUX_PASSWORD=root
 
   mongodb:
     image: docker.io/mongo:3.6
