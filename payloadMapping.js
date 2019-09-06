@@ -1,5 +1,5 @@
 function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {
-    const thingId = `UDMIduino-000`;
+    const thingId = 'UDMIduino-000';
     const jsonString = String.fromCharCode.apply(null, new Uint8Array(bytePayload));
     const jsonData = JSON.parse(jsonString);
     const value = {
@@ -23,13 +23,13 @@ function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {
     };
 
     return Ditto.buildDittoProtocolMsg(
-        `arup.eight.fitzroy`,
+        'arup.eight.fitzroy',
         thingId,
-        `things`,
-        `twin`,
-        `commands`,
-        `modify`,
-        `/features`,
+        'things',
+        'twin',
+        'commands',
+        'modify',
+        '/features',
         headers,
         value
     );

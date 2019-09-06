@@ -10,7 +10,7 @@ curl -X POST -i -u devops:foobar -H 'Content-Type: application/json' -d '{
             "connectionType": "mqtt",
             "connectionStatus": "open",
             "failoverEnabled": true,
-            "uri": "tcp://10.18.32.213:1883",
+            "uri": "black-pearl.clients.global.arup.com:1883",
             "sources": [
                 {
                 "addresses": [
