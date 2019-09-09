@@ -48,5 +48,27 @@ View telegraf logs (also when `exec .. bash`'d in)
 tail -f /var/log/telegraf/telegraf.log
 ```
 
+Subscribe to mosquitto topics with a cafile:
+
+```
+mosquitto_sub -h localhost -d -p 8883 -v -t '#' --cafile /etc/mosquitto/certs/mosq-ca.crt
+```
+
+Mosquitto certs generated as:
+
+https://dzone.com/articles/mqtt-security-securing-a-mosquitto-server
+
+Good cert commands:
+
+https://gist.github.com/webtobesocial/5313b0d7abc25e06c2d78f8b767d4bc3
+
+Bonus!
+
+Verify an x509 cert:
+
+```
+openssl x509 -in mosq-serv.crt -noout -text
+```
+
 ## Links that helped
 https://github.com/influxdata/telegraf/issues/4580

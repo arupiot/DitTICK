@@ -1,6 +1,15 @@
 version: '2.4'
 
 services:
+  mosquitto:
+    image: eclipse-mosquitto:1.6.4
+    ports:
+      - 8080:8883
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./keys/mosquitto/:/etc/mosquitto/certs
+      - v-mosquitto:/mosquitto/data
+
   tick:
     image: samuelebistoletti/docker-statsd-influxdb-grafana:latest
     ports:
@@ -23,6 +32,8 @@ services:
       - INFLUXDB_URL=http://localhost:8086
       - INFLUX_USERNAME=root
       - INFLUX_PASSWORD=root
+    depends_on:
+      - mosquitto
 
   mongodb:
     image: docker.io/mongo:3.6
@@ -159,10 +170,12 @@ services:
        - ./index.html:/etc/nginx/html/index.html:ro
        - ./ditto/documentation/src/main/resources/images:/etc/nginx/html/images:ro
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - gateway
+
 volumes:
   v-ditto-mongo:
   v-grafana:
   v-chronograf:
+  v-mosquitto:

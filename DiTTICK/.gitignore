@@ -2,3 +2,4 @@
 /docker-influxdb-grafana
 /docker-statsd-influxdb-grafana
 /ditto
+/keys
