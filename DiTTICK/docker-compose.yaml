@@ -17,6 +17,7 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning
       - ./grafana/dashboards:/var/lib/grafana/dashboards
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - v-grafana:/var/lib/influxdb
     environment:
       - INFLUXDB_URL=http://localhost:8086
       - INFLUX_USERNAME=root
@@ -30,6 +31,8 @@ services:
           - mongodb
     command: mongod --storageEngine wiredTiger --noscripting
     user: mongodb
+    volumes:
+      - v-ditto-mongo:/data/db
     environment:
        TZ: Europe/Berlin
 
@@ -158,3 +161,6 @@ services:
       - "8080:80"
     depends_on:
       - gateway
+volumes:
+  v-ditto-mongo:
+  v-grafana:
