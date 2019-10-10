@@ -3,3 +3,5 @@
 /docker-statsd-influxdb-grafana
 /ditto
 /keys
+/certbot
+/static
