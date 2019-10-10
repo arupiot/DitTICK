@@ -72,3 +72,4 @@ openssl x509 -in mosq-serv.crt -noout -text
 
 ## Links that helped
 https://github.com/influxdata/telegraf/issues/4580
+https://gist.github.com/soheilhy/8b94347ff8336d971ad0

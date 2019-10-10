@@ -32,6 +32,8 @@ services:
       - INFLUXDB_URL=http://localhost:8086
       - INFLUX_USERNAME=root
       - INFLUX_PASSWORD=root
+      - BASE_PATH=/chronograf
+      - LOG_LEVEL=debug
     depends_on:
       - mosquitto
 
