@@ -4,7 +4,7 @@ services:
   mosquitto:
     image: eclipse-mosquitto:1.6.4
     ports:
-      - 8080:8883
+      - 8883:8883
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
       - ./keys/mosquitto/:/etc/mosquitto/certs
