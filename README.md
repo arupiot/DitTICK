@@ -11,7 +11,6 @@ https://github.com/eclipse/ditto-examples/tree/master/mqtt-bidirectional
 - Create a connection
 - Create a thing
 
-
 - Test with `mosquitto_pub` first, don't get crazy!
 
 ```
