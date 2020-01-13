@@ -4,10 +4,9 @@ services:
   mosquitto:
     image: eclipse-mosquitto:1.6.4
     ports:
-      - 8080:8883
+      - 8080:1883
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - ./keys/mosquitto/:/etc/mosquitto/certs
       - v-mosquitto:/mosquitto/data
 
   tick:
@@ -29,9 +28,10 @@ services:
       - v-grafana:/var/lib/influxdb
       - v-chronograf:/var/lib/chronograf
     environment:
+      - MOSQUITTO_URI=tcp://mosquitto:1883
       - INFLUXDB_URL=http://localhost:8086
-      - INFLUX_USERNAME=root
-      - INFLUX_PASSWORD=root
+      - INFLUX_USERNAME=admin
+      - INFLUX_PASSWORD=dittick
       - BASE_PATH=/chronograf
       - LOG_LEVEL=debug
     depends_on:
