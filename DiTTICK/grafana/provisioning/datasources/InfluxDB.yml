@@ -2,9 +2,9 @@ datasources:
   - name: InfluxDB
     type: influxdb
     access: proxy
-    database: telegraf
-    user: root
-    password: root
+    database: dittick
+    user: admin
+    password: dittick
     url: http://localhost:8086
     isDefault: true
 

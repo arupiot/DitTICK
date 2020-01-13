@@ -1,0 +1,45 @@
+version: '2.4'
+
+services:
+  tick:
+    container_name: tick
+    image: samuelebistoletti/docker-statsd-influxdb-grafana:latest
+    ports:
+      - 3003:3003
+      - 3004:8888
+      - 8086:8086
+      - 8125:8125/udp
+    ulimits:
+      nofile:
+        soft: "66000"
+        hard: "66000"
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - v-grafana:/var/lib/influxdb
+      - v-chronograf:/var/lib/chronograf
+    environment:
+      - INFLUXDB_URL=http://tick:8086
+      - INFLUX_USERNAME=admin
+      - INFLUX_PASSWORD=dittick
+      - BASE_PATH=/chronograf
+      - LOG_LEVEL=debug
+
+  nginx:
+    container_name: nginx
+    image: docker.io/nginx:1.13-alpine
+    volumes:
+       - ./nginx-tick-only.conf:/etc/nginx/nginx.conf:ro
+       - ./nginx.htpasswd:/etc/nginx/nginx.htpasswd:ro
+       - ./nginx-cors.conf:/etc/nginx/nginx-cors.conf:ro
+       - ./index.html:/etc/nginx/html/index.html:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - tick
+
+volumes:
+  v-grafana:
+  v-chronograf:
