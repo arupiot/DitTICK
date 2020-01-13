@@ -23,7 +23,7 @@ function mapToDittoProtocolMsg(headers, textPayload, bytePayload, contentType) {
     };
 
     return Ditto.buildDittoProtocolMsg(
-        'arup.eight.fitzroy',
+        'open.iot',
         thingId,
         'things',
         'twin',
