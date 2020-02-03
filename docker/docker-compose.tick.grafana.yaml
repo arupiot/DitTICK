@@ -21,7 +21,7 @@ services:
       - v-grafana:/var/lib/influxdb
       - v-chronograf:/var/lib/chronograf
     environment:
-      - MOSQUITTO_URI=tcp://172.17.0.1:1883
+      - MOSQUITTO_URI=tcp://172.17.0.1:3389
       - INFLUXDB_URL=http://tick:8086
       - INFLUX_USERNAME=admin
       - INFLUX_PASSWORD=dittick
